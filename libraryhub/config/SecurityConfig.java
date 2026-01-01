@@ -31,7 +31,7 @@ public class SecurityConfig {
 
                         .requestMatchers("/profile/delete","/profile/","/profile/update", "/profile/change-password",
                                 "/vendor-management/delete","/subscriptions/delete",
-                                "student-management/delete","/publications/delete","/books-management/delete",
+                                "/student-management/delete","/publications/delete","/books-management/delete",
                                 "/books-allotment-issue")
                         .fullyAuthenticated()
 
