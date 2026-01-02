@@ -32,6 +32,7 @@ public class BookIssueServiceImpl implements BookIssueService {
         and later reviewed, modified, and integrated by the developer.
     */
     @Override
+    @Transactional
     public void issueBook(IssueBookDto dto) {
 
         Book book = bookRepository.findById(dto.bookId()).orElseThrow(() -> new RuntimeException("Book not found"));
@@ -53,8 +54,8 @@ public class BookIssueServiceImpl implements BookIssueService {
         issue.setStatus(BookIssueStatus.ISSUED);
         issue.setReturnDate(dto.returnDate());
 
-        bookIssueRepository.save(issue);
         book.setQuantity(book.getQuantity() - 1);
+        bookIssueRepository.save(issue);
     }
 
 
